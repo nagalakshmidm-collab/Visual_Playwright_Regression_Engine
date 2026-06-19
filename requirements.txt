@@ -1,0 +1,12 @@
+# Modern E2E Testing Core
+playwright==1.49.0
+pytest==8.3.3
+pytest-playwright==0.6.0
+
+# API & Data Verification Layers
+requests==2.32.3
+pandas==2.2.3
+
+# Visual AI Regression & Image Diff utilities
+pixelmatch==0.3.0
+Pillow==10.4.0

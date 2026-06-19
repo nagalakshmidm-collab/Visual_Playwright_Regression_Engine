@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment and Local Dependencies
+.venv/
+venv/
+ENV/
+env/
+node_modules/
+
+# Playwright & PyTest Execution Artifacts
+.pytest_cache/
+test-results/
+playback.webm
+*.video.webm
+*.trace.zip
+
+# Visual Regression Snapshots 
+# Note: Keep your reference/baseline images, but ignore temporary failure execution diffs
+*_diff.png
+*_actual.png
+
+# IDE Configurations
+.cursor/
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

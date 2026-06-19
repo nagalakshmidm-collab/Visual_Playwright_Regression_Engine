@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LocalHost Analytics Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+
+    #metrics-panel {
+      width: 420px;
+      height: 129px;
+      padding: 20px;
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      background: #ffffff;
+      box-sizing: border-box;
+      overflow: hidden;
+      font-family: "Courier New", Courier, monospace;
+      -webkit-font-smoothing: none;
+      font-smooth: never;
+      text-rendering: geometricPrecision;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 23px;
+      margin-bottom: 10px;
+    }
+
+    .metric-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .metric-label {
+      color: #57606a;
+      font-size: 14px;
+      line-height: 23px;
+    }
+
+    #event-counter,
+    #status-badge,
+    #workflow-accuracy {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 23px;
+      color: #24292f;
+    }
+
+    #status-badge {
+      color: #cf222e;
+    }
+  </style>
+</head>
+<body>
+  <section id="metrics-panel" aria-label="LocalHost Analytics Dashboard metrics">
+    <div class="metric-row">
+      <span class="metric-label">Total Event Count</span>
+      <span id="event-counter">—</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">System Status</span>
+      <span id="status-badge">—</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Workflow Accuracy</span>
+      <span id="workflow-accuracy">—</span>
+    </div>
+  </section>
+  <script>
+    fetch("https://api.local-sandbox.internal/v1/metrics")
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById("event-counter").textContent =
+          data.total_event_count.toLocaleString("en-US");
+        document.getElementById("status-badge").textContent = data.system_status;
+        document.getElementById("workflow-accuracy").textContent =
+          data.workflow_accuracy;
+      });
+  </script>
+</body>
+</html>
